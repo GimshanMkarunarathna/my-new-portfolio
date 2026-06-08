@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gimshan Menaka — UI/UX Designer</title>
+  <meta name="description" content="Gimshan Menaka Karunarathna — UI/UX Designer & Flutter Developer, Sri Lanka."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+(function () {
+  emailjs.init("2OVVMcuHpv-bsQ2cV");
+})();
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const submitBtn = document.getElementById("submitBtn");
+  const bt = submitBtn.querySelector(".bt");
+  const bl = submitBtn.querySelector(".bl");
+
+  bt.style.display = "none";
+  bl.style.display = "inline";
+
+  emailjs.sendForm(
+    "service_3c83yw5",
+    "template_m44ft58",
+    this
+  )
+  .then(() => {
+    document.getElementById("formOk").style.display = "block";
+    this.reset();
+
+    bt.style.display = "inline";
+    bl.style.display = "none";
+  })
+  .catch((error) => {
+    alert("Failed to send message!");
+    console.error(error);
+
+    bt.style.display = "inline";
+    bl.style.display = "none";
+  });
+});
+</script>
+<body>
+
+<!-- NOISE OVERLAY -->
+<div class="noise"></div>
+
+<!-- CURSOR -->
+<div class="c-cursor" id="cursor"></div>
+<div class="c-cursor-text" id="cursorText"></div>
+
+<!-- PROFILE IMAGE INPUT (hidden, triggered by dropzone) -->
+<input type="file" id="profileImgInput" accept="image/*" style="display:none"/>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-word">
+      <span>S</span><span>H</span><span>A</span><span>N</span>
+    </div>
+    <svg class="loader-svg" viewBox="0 0 200 2"><line x1="0" y1="1" x2="200" y2="1" stroke="#ff4d00" stroke-width="2"/></svg>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#home" class="nav-logo">Shan<em>.</em></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="nl" data-s="home">Home</a></li>
+    <li><a href="#about" class="nl" data-s="about">About</a></li>
+    <li><a href="#projects" class="nl" data-s="projects">Projects</a></li>
+    <li><a href="#skills" class="nl" data-s="skills">Skills</a></li>
+    <li><a href="#contact" class="nl" data-s="contact">Contact</a></li>
+  </ul>
+  <a href="/Gimshan_CV.pdf" download class="nav-resume">Resume ↗</a>
+  <button class="hamburger" id="ham" aria-label="menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#home" class="mob-link">Home</a>
+  <a href="#about" class="mob-link">About</a>
+  <a href="#projects" class="mob-link">Projects</a>
+  <a href="#skills" class="mob-link">Skills</a>
+  <a href="#contact" class="mob-link">Contact</a>
+  <a href="/Gimshan_CV.pdf" download class="mob-resume">Download CV ↗</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="home" class="hero">
+  <!-- Grid lines -->
+  <div class="hero-grid"></div>
+  <!-- Gradient blobs -->
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+  <!-- Floating tech icons — each moves independently with cursor parallax, hero only -->
+  <div class="icon-orbit" id="iconOrbit">
+    <!-- data-sx / data-sy = separate X and Y speed multipliers per icon, data-dir = 1 or -1 inverts direction -->
+    <div class="orb-icon" data-sx="0.022" data-sy="0.038" data-dir="1"  style="--bx:11%;--by:16%">
+      <img src="https://cdn.simpleicons.org/figma/ffffff" alt="Figma"/>
+      <span>Figma</span>
+    </div>
+    <div class="orb-icon" data-sx="0.055" data-sy="0.028" data-dir="-1" style="--bx:80%;--by:11%">
+      <img src="https://cdn.simpleicons.org/flutter/ffffff" alt="Flutter"/>
+      <span>Flutter</span>
+    </div>
+    <div class="orb-icon" data-sx="0.018" data-sy="0.06"  data-dir="1"  style="--bx:89%;--by:58%">
+      <img src="https://cdn.simpleicons.org/react/ffffff" alt="React"/>
+      <span>React</span>
+    </div>
+    <div class="orb-icon" data-sx="0.042" data-sy="0.015" data-dir="-1" style="--bx:76%;--by:84%">
+      <img src="https://cdn.simpleicons.org/nodedotjs/ffffff" alt="Node.js"/>
+      <span>Node.js</span>
+    </div>
+    <div class="orb-icon" data-sx="0.07"  data-sy="0.045" data-dir="1"  style="--bx:7%;--by:77%">
+      <img src="https://cdn.simpleicons.org/javascript/ffffff" alt="JS"/>
+      <span>JS</span>
+    </div>
+    <div class="orb-icon" data-sx="0.03"  data-sy="0.07"  data-dir="-1" style="--bx:21%;--by:91%">
+      <img src="https://cdn.simpleicons.org/firebase/ffffff" alt="Firebase"/>
+      <span>Firebase</span>
+    </div>
+    <div class="orb-icon" data-sx="0.065" data-sy="0.02"  data-dir="1"  style="--bx:92%;--by:30%">
+      <img src="https://cdn.simpleicons.org/kotlin/ffffff" alt="Kotlin"/>
+      <span>Kotlin</span>
+    </div>
+    <div class="orb-icon" data-sx="0.025" data-sy="0.055" data-dir="-1" style="--bx:4%;--by:44%">
+      <img src="https://cdn.simpleicons.org/python/ffffff" alt="Python"/>
+      <span>Python</span>
+    </div>
+  </div>
+
+  <!-- Hero 3-col inner grid -->
+  <div class="hero-inner">
+
+  <!-- Col 1: name / bio / buttons -->
+  <div class="hero-body">
+    <div class="hero-meta">
+      <div class="hero-available">
+        <span class="avail-dot"></span>
+        <span>Available for work</span>
+      </div>
+      <div class="hero-location">📍 Sri Lanka</div>
+    </div>
+
+    <div class="hero-name-block">
+      <div class="hero-intro">UI/UX Designer | Product & UX Design Enthusiast</div>
+      <h1 class="hero-name">
+        <span class="hn-line">Gimshan</span>
+        <span class="hn-line hn-accent">M e n a k a</span>
+      </h1>
+      <p class="hero-tagline">I transform complex ideas into <em>high-performance</em> digital products.</p>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#projects" class="ha-primary">View Work <span>→</span></a>
+      <a href="#contact" class="ha-ghost">Let's Talk</a>
+    </div>
+
+    <div class="hero-socials">
+      <a href="https://github.com/GimshanMkarunarathna" target="_blank" class="hs-link">GH</a>
+      <a href="https://www.linkedin.com/in/gimshan-menaka-karunarathna-30a192320/" target="_blank" class="hs-link">LI</a>
+      <a href="https://www.tiktok.com/@pixelcraftui" target="_blank" class="hs-link">TK</a>
+      <a href="mailto:shang71111@gmail.com" class="hs-link">ML</a>
+    </div>
+  </div>
+
+  <!-- Col 2: center status card -->
+  <div class="hero-center">
+
+    <!-- Animated marquee ring -->
+    <div class="hc-marquee-wrap">
+      <div class="hc-marquee">
+        <span>UI/UX Design</span><span class="hcm-dot">✦</span>
+        <span>Flutter Dev</span><span class="hcm-dot">✦</span>
+        <span>Product Design</span><span class="hcm-dot">✦</span>
+        <span>Figma Expert</span><span class="hcm-dot">✦</span>
+        <span>Mobile Apps</span><span class="hcm-dot">✦</span>
+        <span>Design Systems</span><span class="hcm-dot">✦</span>
+        <!-- duplicate for seamless loop -->
+        <span>UI/UX Design</span><span class="hcm-dot">✦</span>
+        <span>Flutter Dev</span><span class="hcm-dot">✦</span>
+        <span>Product Design</span><span class="hcm-dot">✦</span>
+        <span>Figma Expert</span><span class="hcm-dot">✦</span>
+        <span>Mobile Apps</span><span class="hcm-dot">✦</span>
+        <span>Design Systems</span><span class="hcm-dot">✦</span>
+      </div>
+    </div>
+
+    <!-- Central status card -->
+    <div class="hc-card">
+      <div class="hc-card-top">
+        <span class="hcc-label">Currently</span>
+        <span class="hcc-live"><span class="hcc-live-dot"></span>Active</span>
+      </div>
+      <div class="hc-card-main">
+        <div class="hcc-role-line">
+          <span class="hcc-at">@</span>Axstar
+        </div>
+        <div class="hcc-sub">UI/UX Designer</div>
+      </div>
+      <div class="hc-card-bottom">
+        <!-- <div class="hcc-stat"><span>3+</span>yrs</div>
+        <div class="hcc-divv"></div>-->
+        <div class="hcc-stat"><span>01+</span>proj</div>
+        <div class="hcc-divv"></div>
+        <div class="hcc-stat"><span>∞</span>ideas</div>
+      </div>
+    </div>
+
+    <!-- Mini project previews floating around -->
+    <div class="hc-preview hcp-1">
+      <div class="hcp-dot"></div>
+      <span>Fitnexa App</span>
+    </div>
+    <div class="hc-preview hcp-2">
+      <div class="hcp-dot"></div>
+      <span>VR Zone</span>
+    </div>
+    <div class="hc-preview hcp-3">
+      <div class="hcp-dot"></div>
+      <span>Food Menu</span>
+    </div>
+
+    <!-- Decorative arcs -->
+    <svg class="hc-arc" viewBox="0 0 220 220" fill="none">
+      <circle cx="110" cy="110" r="100" stroke="rgba(255,77,0,0.07)" stroke-width="1" stroke-dasharray="4 8"/>
+      <circle cx="110" cy="110" r="70"  stroke="rgba(255,77,0,0.05)" stroke-width="1" stroke-dasharray="2 12"/>
+    </svg>
+
+  </div>
+
+  <!-- Col 3: photo card + stats -->
+  <div class="hero-right-col">
+    <!-- Profile image card — professional -->
+    <div class="hero-photo-card" id="heroPhotoCard">
+
+      <!-- Outer animated border ring -->
+      <div class="hpc-ring"></div>
+
+      <div class="hpc-inner" id="hpcInner">
+        <!-- Actual image -->
+        <img src="/images/hero-profile.png" alt="Gimshan Menaka" class="hpc-img" id="heroProfileImg"
+             onerror="this.closest('.hpc-inner').classList.add('no-photo')"/>
+
+        <!-- Fallback when no image -->
+        <div class="hpc-fallback">
+          <span class="hpc-initials">GM</span>
+          <label class="hpc-upload-btn" for="profileUpload" title="Upload photo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            Add Photo
+          </label>
+          <input type="file" id="profileUpload" accept="image/*" style="display:none"/>
+        </div> 
+
+        <!-- CRT scan-line texture -->
+        <div class="hpc-scanline"></div>
+
+        <!-- Cinematic bottom gradient + nameplate -->
+        <div class="hpc-nameplate">
+          <div class="hpc-name">Gimshan<br/>Menaka</div>
+          <div class="hpc-role">UI/UX Designer · Flutter Dev</div>
+          <div class="hpc-status">
+            <span class="hpc-status-dot"></span>
+            <span>Available for Work</span>
+          </div>
+        </div>
+
+        <!-- Change-photo overlay on hover -->
+        <div class="hpc-overlay">
+          <label for="profileUpload" class="hpc-change-btn" title="Change photo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          </label>
+        </div>
+
+        <!-- Corner brackets -->
+        <div class="hpc-corner hpc-corner-tl"></div>
+        <div class="hpc-corner hpc-corner-tr"></div>
+        <div class="hpc-corner hpc-corner-bl"></div>
+        <div class="hpc-corner hpc-corner-br"></div>
+      </div>
+
+      <!-- Vertical side badge -->
+      <div class="hpc-badge-left">Portfolio</div>
+
+      <!-- Below-card tag -->
+      <div class="hpc-tag">
+        <span class="hpc-dot"></span>
+        UI/UX Designer
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="hero-stats">
+      <!--<div class="hs-stat">
+        <span class="hs-num">3+</span> 
+        <span class="hs-label">Years<br/>Experience</span> 
+      </div>-->
+      <div class="hs-divider"></div>
+      <div class="hs-stat">
+        <span class="hs-num">05+</span>
+        <span class="hs-label">Projects<br/>Delivered</span>
+      </div>
+      <div class="hs-divider"></div>
+      <div class="hs-stat">
+        <span class="hs-num">∞</span>
+        <span class="hs-label">Ideas<br/>Ready</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint">
+    <div class="sh-line"></div>
+    <span>scroll</span>
+  </div>
+
+  <!-- Cursor trail canvas — hero only -->
+  <canvas id="heroTrailCanvas" class="hero-trail-canvas"></canvas>
+
+  </div><!-- /.hero-inner -->
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="sec-label reveal">About</div>
+    <div class="about-grid">
+
+      <!-- Left: profile image dropzone -->
+      <div class="about-left reveal">
+        <!-- Image upload dropzone -->
+        <div class="profile-dropzone" id="profileDropzone" title="Click or drag to upload photo">
+          <!-- Preview image (hidden until uploaded) -->
+           <img src="/images/about-profile.png" alt="Gimshan Menaka" class="hpc-img" id="heroProfileImg"
+             onerror="this.closest('.hpc-inner').classList.add('no-photo')"/>
+          <!-- Placeholder shown when no image -->
+          <div class="profile-placeholder" id="profileImgPlaceholder">
+            <div class="pp-initials"></div>
+            <div class="pp-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </div>
+            <span class="pp-text">Upload Photo</span>
+            <span class="pp-sub">Click or drag & drop</span>
+          </div>
+          <!-- Remove button -->
+          <button class="profile-remove-btn" id="profileRemoveBtn" style="display:none" title="Remove photo">✕</button>
+          <!-- Corner badge -->
+          <div class="profile-badge">
+            <span class="pb-dot"></span>
+            UI/UX Designer
+          </div>
+        </div>
+
+        <!-- Decorative accent line -->
+        <div class="about-accent-line"></div>
+        <div class="about-number-bg">01</div>
+      </div>
+
+      <!-- Right: content -->
+      <div class="about-right reveal r-delay">
+        <h2 class="about-heading">The <span>Designer</span><br/>Behind the Work</h2>
+
+        <p class="about-lead">I'm <strong>Gimshan Menaka Karunarathna</strong> — a UI/UX Designer, Flutter Developer, and third-year Management Information Systems undergraduate at <em>NSBM Green University</em>.</p>
+
+        <p class="about-body"> Specializing in bridging aesthetic design with functional performance. Currently shaping end-to-end web and mobile interfaces as a <em>UI/UX Designer at Axstar</em> and leading creative visions as the <em>Lead Designer for AIS</em>, alongside my role at the university's <em>Hackathon Hub</em>.</p>
+
+        <p class="about-body">With deep roots in user research, interactive prototyping, and front-end engineering, my expertise extends into <em>Business Analysis and Product Management</em> — combining user insights with strategic business goals to drive scalable digital products.</p>
+
+        <div class="about-cards">
+          <div class="ac-card">
+            <div class="ac-top">🎓</div>
+            <div class="ac-label">Education</div>
+            <div class="ac-val">MIS — NSBM</div>
+          </div>
+          <div class="ac-card">
+            <div class="ac-top">💼</div>
+            <div class="ac-label">Role</div>
+            <div class="ac-val">UI/UX @ Axstar</div>
+          </div>
+          <div class="ac-card">
+            <div class="ac-top">📍</div>
+            <div class="ac-label">Base</div>
+            <div class="ac-val">Kottawa,Sri Lanka</div>
+          </div>
+          <div class="ac-card">
+            <div class="ac-top">🎯</div>
+            <div class="ac-label">Focus</div>
+            <div class="ac-val">Product Design & UX Eng</div>
+          </div>
+        </div>
+
+        <div class="about-contact-row">
+          <a href="mailto:gimshanmenaka124@gmail.com" class="acr-item">gimshanmenaka124@gmail.com</a>
+          <a href="tel:+94714835601" class="acr-item">+94 71 483 5601</a>
+        </div>
+
+        <a href="#contact" class="btn-main">Work With Me <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROJECTS ═══════════════ -->
+<section id="projects" class="projects">
+  <div class="wrap">
+    <div class="sec-label reveal">Portfolio</div>
+    <div class="projects-header reveal">
+      <h2 class="sec-heading">UI/UX Design <span>Showcase</span></h2>
+      <p class="sec-sub">Each project — a story of problem-solving, research, and pixel-perfect execution.</p>
+    </div>
+
+    <!-- Horizontal swiper -->
+    <div class="swiper proj-swiper reveal">
+      <div class="swiper-wrapper">
+
+        <!-- Card template -->
+        <div class="swiper-slide">
+          <div class="pc" data-cursor="View">
+            <div class="pc-number">01</div>
+            <div class="pc-img">
+              <img src="/images/Fitnexa.png" alt="Fitnexa" onerror="this.parentElement.classList.add('no-img')"/>
+              <div class="pc-img-fallback">FITNEXA</div>
+            </div>
+            <div class="pc-info">
+              <div class="pc-tags"><span>UI/UX</span><span>Mobile</span><span>Figma</span></div>
+              <h3 class="pc-title">Fitnexa Gym App</h3>
+              <p class="pc-desc">A full fitness experience — workout tracking, nutrition, social challenges.</p>
+              <div class="pc-links">
+                <a href="https://www.figma.com/design/Igb1weSQTUSBkN7CqZJRGV/Untitled?node-id=864-1983" target="_blank" class="pcl figma-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zM12 12.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0zM5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 11-7 0zM5 12.5A3.5 3.5 0 018.5 9H12v7H8.5A3.5 3.5 0 015 12.5z"/></svg>
+                  Figma
+                </a>
+                <a href="https://www.figma.com/proto/Igb1weSQTUSBkN7CqZJRGV" target="_blank" class="pcl proto-link">Prototype ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="pc" data-cursor="View">
+            <div class="pc-number">02</div>
+            <div class="pc-img">
+              <video autoplay loop muted playsinline id="vrZoneVideo" onerror="this.parentElement.classList.add('no-img')">
+  <source src="/videos/VRZONE.mp4" type="video/mp4">
+  
+</video>
+              <div class="pc-img-fallback">VR ZONE</div>
+            </div>
+            <div class="pc-info">
+              <div class="pc-tags"><span>UI/UX</span><span>AR/VR</span><span>Figma</span></div>
+              <h3 class="pc-title">VR Zone</h3>
+              <p class="pc-desc">Immersive VR experience platform with bold spatial design language.</p>
+              <div class="pc-links">
+                <a href="https://www.figma.com/design/Igb1weSQTUSBkN7CqZJRGV" target="_blank" class="pcl figma-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zM12 12.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0zM5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 11-7 0zM5 12.5A3.5 3.5 0 018.5 9H12v7H8.5A3.5 3.5 0 015 12.5z"/></svg>
+                  Figma
+                </a>
+                <a href="https://www.figma.com/proto/Igb1weSQTUSBkN7CqZJRGV" target="_blank" class="pcl proto-link">Prototype ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="pc" data-cursor="View">
+            <div class="pc-number">03</div>
+            <div class="pc-img">
+              <video autoplay loop muted playsinline id="vrZoneVideo" onerror="this.parentElement.classList.add('no-img')">
+  <source src="/videos/Portfolio.mp4" type="video/mp4">
+  
+</video>
+              <div class="pc-img-fallback">PORTFOLIO</div>
+            </div>
+            <div class="pc-info">
+              <div class="pc-tags"><span>UI/UX</span><span>Web</span><span>Figma</span></div>
+              <h3 class="pc-title">Portfolio Design</h3>
+              <p class="pc-desc">A personal portfolio design system with dark and expressive aesthetics.</p>
+              <div class="pc-links">
+                <a href="https://www.figma.com/design/Igb1weSQTUSBkN7CqZJRGV" target="_blank" class="pcl figma-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zM12 12.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0zM5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 11-7 0zM5 12.5A3.5 3.5 0 018.5 9H12v7H8.5A3.5 3.5 0 015 12.5z"/></svg>
+                  Figma
+                </a>
+                <a href="#" class="pcl proto-link">Prototype ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="pc" data-cursor="View">
+            <div class="pc-number">04</div>
+            <div class="pc-img">
+              <video autoplay loop muted playsinline id="vrZoneVideo" onerror="this.parentElement.classList.add('no-img')">
+  <source src="/videos/GreenWildSafari.mp4" type="video/mp4">
+  
+</video>
+              <div class="pc-img-fallback">GREEN WILD SAFARI</div>
+            </div>
+            <div class="pc-info">
+              <div class="pc-tags"><span>UI/UX</span><span>WEB DESIGN</span><span>HOSPITALITY</span></div>
+              <h3 class="pc-title"> GREEN WILD SAFARI</h3>
+              <p class="pc-desc">Designed a responsive luxury resort website with an intuitive booking experience.</p>
+              <div class="pc-links">
+                <a href="https://www.figma.com/design/Igb1weSQTUSBkN7CqZJRGV" target="_blank" class="pcl figma-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zM12 12.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0zM5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 11-7 0zM5 12.5A3.5 3.5 0 018.5 9H12v7H8.5A3.5 3.5 0 015 12.5z"/></svg>
+                  Figma
+                </a>
+                <a href="#" class="pcl proto-link">Prototype ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="pc" data-cursor="View">
+            <div class="pc-number">05</div>
+            <div class="pc-img">
+              <video autoplay loop muted playsinline id="vrZoneVideo" onerror="this.parentElement.classList.add('no-img')">
+  <source src="/videos/AirWeb.mp4" type="video/mp4">
+  
+</video>
+              <div class="pc-img-fallback">JETSET LUXE PORTAL</div>
+            </div>
+            <div class="pc-info">
+              <div class="pc-tags"><span>UI/UX</span><span>WEB DESIGN</span><span>PREMIUM</span></div>
+              <h3 class="pc-title">JETSET LUXE PORTAL</h3>
+              <p class="pc-desc">Crafted a high-fidelity web experience with premium, ultra-clean UI layouts</p>
+              <div class="pc-links">
+                <a href="https://www.figma.com/design/Igb1weSQTUSBkN7CqZJRGV" target="_blank" class="pcl figma-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zM12 12.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0zM5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 11-7 0zM5 12.5A3.5 3.5 0 018.5 9H12v7H8.5A3.5 3.5 0 015 12.5z"/></svg>
+                  Figma
+                </a>
+                <a href="#" class="pcl proto-link">Prototype ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="pc" data-cursor="View">
+            <div class="pc-number">06</div>
+            <div class="pc-img">
+              <img src="/images/Golanka.png" alt="Avengers Fan App" onerror="this.parentElement.classList.add('no-img')"/>
+              <div class="pc-img-fallback">GO LANKA APP</div>
+            </div>
+            <div class="pc-info">
+              <div class="pc-tags"><span>UI/UX</span><span>MOBILE</span><span>ACCESSIBILITY</span></div>
+              <h3 class="pc-title">GO LANKA APP</h3>
+              <p class="pc-desc">Designed an accessible public transport mobile app for local commuters.</p>
+              <div class="pc-links">
+                <a href="https://www.figma.com/design/Igb1weSQTUSBkN7CqZJRGV" target="_blank" class="pcl figma-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zM12 2h3.5a3.5 3.5 0 110 7H12V2zM12 12.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0zM5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 11-7 0zM5 12.5A3.5 3.5 0 018.5 9H12v7H8.5A3.5 3.5 0 015 12.5z"/></svg>
+                  Figma
+                </a>
+                <a href="#" class="pcl proto-link">Prototype ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+      <!-- Custom nav -->
+      <div class="proj-nav">
+        <button class="pn-btn swiper-button-prev-custom" id="projPrev">←</button>
+        <button class="pn-btn swiper-button-next-custom" id="projNext">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SKILLS ═══════════════ -->
+<section id="skills" class="skills">
+  <div class="wrap">
+    <div class="sec-label reveal">Expertise</div>
+    <h2 class="sec-heading reveal">My <span>Skills</span> & Tools</h2>
+
+    <div class="skills-layout">
+      <!-- Category 1 -->
+      <div class="sk-group reveal">
+        <div class="sk-group-label">Design</div>
+        <div class="sk-row">
+          <div class="sk-pill">
+            <img src="https://cdn.simpleicons.org/figma/ff4d00" alt="Figma"/>Figma
+          </div>
+          <div class="sk-pill">
+            <img src="https://cdn.simpleicons.org/canva" alt="Canva"/>Canva
+          </div>
+          <div class="sk-pill">
+            <img src="https://cdn.simpleicons.org/adobexd/FF61F6" alt="XD"/>Adobe XD
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="sk-group reveal r-delay">
+        <div class="sk-group-label">Development</div>
+        <div class="sk-row">
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter"/>Flutter</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React"/>React</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node.js"/>Node.js</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS"/>JavaScript</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/>Python</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/kotlin/7F52FF" alt="Kotlin"/>Kotlin</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/php/777BB4" alt="PHP"/>PHP</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/cplusplus/00599C" alt="C++"/>C++</div>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="sk-group reveal r-delay-2">
+        <div class="sk-group-label">Database & Cloud</div>
+        <div class="sk-row">
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase"/>Firebase</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/>MySQL</div>
+          <div class="sk-pill"><img src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB"/>MongoDB</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-label reveal">Get In Touch</div>
+    <div class="contact-grid">
+
+      <div class="contact-left reveal">
+        <h2 class="contact-heading">Let's <span>Work</span><br/>Together</h2>
+        <p class="contact-intro">Have a project in mind? Let's create something amazing. I'm open to new opportunities and exciting challenges.</p>
+
+        <div class="c-links">
+          <a href="mailto:gimshanmenaka124@gmail.com" class="cl-item">
+            <span class="cl-ico">✉</span>
+            <div class="cl-body"><span class="cl-l">Email</span><span class="cl-v">gimshanmenaka124@gmail.com</span></div>
+            <span class="cl-arr">↗</span>
+          </a>
+          <a href="https://www.linkedin.com/in/gimshan-menaka-karunarathna-30a192320/" target="_blank" class="cl-item">
+            <span class="cl-ico">in</span>
+            <div class="cl-body"><span class="cl-l">LinkedIn</span><span class="cl-v">Gimshan Menaka Karunarathna</span></div>
+            <span class="cl-arr">↗</span>
+          </a>
+          <a href="https://github.com/GimshanMkarunarathna" target="_blank" class="cl-item">
+            <span class="cl-ico">GH</span>
+            <div class="cl-body"><span class="cl-l">GitHub</span><span class="cl-v">GimshanMkarunarathna</span></div>
+            <span class="cl-arr">↗</span>
+          </a>
+          <a href="https://wa.me/94714835601" target="_blank" class="cl-item">
+            <span class="cl-ico">WA</span>
+            <div class="cl-body"><span class="cl-l">WhatsApp</span><span class="cl-v">+94 71 483 5601</span></div>
+            <span class="cl-arr">↗</span>
+          </a>
+          <a href="https://www.tiktok.com/@pixelcraftui" target="_blank" class="cl-item">
+            <span class="cl-ico">TK</span>
+            <div class="cl-body"><span class="cl-l">TikTok</span><span class="cl-v">@pixelcraftui</span></div>
+            <span class="cl-arr">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-right reveal r-delay">
+        <div class="contact-form-wrap">
+          <form id="contactForm">
+            <div class="fg">
+              <label>Name</label>
+              <input type="text" name="name" placeholder="Your name" required/>
+            </div>
+            <div class="fg">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="your@email.com" required/>
+            </div>
+            <div class="fg">
+              <label>Subject</label>
+              <input type="text" name="subject" placeholder="Project inquiry"/>
+            </div>
+            <div class="fg">
+              <label>Message</label>
+              <textarea name="message" rows="5" placeholder="Tell me about your project…" required></textarea>
+            </div>
+            <button type="submit" class="btn-main full-w" id="submitBtn">
+              <span class="bt">Send Message →</span>
+              <span class="bl" style="display:none">Sending…</span>
+            </button>
+          </form>
+          <div id="formOk" class="form-ok" style="display:none">✓ Message sent! I'll reply soon.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a href="#home" class="footer-logo">Shan<em>.</em></a>
+    <p>© 2026 Gimshan Menaka Karunarathna · Crafted with passion</p>
+    <div class="footer-socials">
+      <a href="https://github.com/GimshanMkarunarathna" target="_blank">GH</a>
+      <a href="https://www.linkedin.com/in/gimshan-menaka-karunarathna-30a192320/" target="_blank">LI</a>
+      <a href="https://www.tiktok.com/@pixelcraftui" target="_blank">TK</a>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="btt" class="btt" aria-label="Back to top">↑</button>
+
+<!-- HIRE MODAL -->
+<div id="hireModal" class="modal-bg">
+  <div class="modal-card">
+    <button class="modal-x" id="modalX">✕</button>
+    <h2>Hire <span>Gimshan</span></h2>
+    <p>Let's build something amazing together.</p>
+    <form id="hireForm">
+      <div class="fg"><input type="text" name="name" placeholder="Your Name" required/></div>
+      <div class="fg"><input type="email" name="email" placeholder="Your Email" required/></div>
+      <div class="fg"><textarea name="message" rows="4" placeholder="Tell me about your project…" required></textarea></div>
+      <button type="submit" class="btn-main full-w">Send →</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
